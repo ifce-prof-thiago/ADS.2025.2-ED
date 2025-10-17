@@ -1,30 +1,52 @@
 package cap03.linked_list;
 
-import cap03.Player;
-
-public class SLinkedList {
-    private Node<Player> head;
+public class SLinkedList<T> {
+    private Node<T> first;
+    private Node<T> last;
     private long length;
 
     public SLinkedList() {
-        this.head = null;
+        this.first = null;
+        this.last = null;
         this.length = 0;
     }
 
-    public void addFirst(Player player) {
-        Node<Player> temp = head;
-        Node<Player> newNode = new Node<>(player);
-        newNode.changeNext(temp);
-        this.head = newNode;
+    public void addFirst(T element) {
+        var temp = first;
+        this.first = new Node<>(element, temp);
         this.length++;
+        if(length == 1) {
+            last = first;
+        }
     }
 
-    public void addLast(Player player) {
+    public void addLast(T element) {
+        var temp = last;
+        temp.next = new Node<T>(element, null);
+        last = temp.next;
+        length++;
+    }
+
+    public void removeFirst() {
 
     }
 
-    public Node<Player> head() {
-        return head;
+    public void removeLast(){
+
+    }
+
+    private static class Node<T> {
+        final T element;
+        Node<T> next;
+
+        Node(T element, Node<T> next) {
+            this.element = element;
+            this.next = next;
+        }
+
+        boolean hasNext() {
+            return next != null;
+        }
     }
 
 }
