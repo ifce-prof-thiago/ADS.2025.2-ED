@@ -1,16 +1,14 @@
 package cap03.linked_list;
 
-import java.util.LinkedList;
-
 public class Main {
     public static void main(String[] args) {
-        SLinkedList<String> list = new SLinkedList<>();
+        DoublyLinkedList<String> list = new DoublyLinkedList<>();
         list.addFirst("A");
         list.addFirst("B");
         list.addLast("C");
         list.addFirst("D");
         list.addLast("E");
-
+        list.removeLast();
         list.print();
 
     }
