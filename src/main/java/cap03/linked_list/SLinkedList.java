@@ -12,36 +12,55 @@ public class SLinkedList<T> {
     }
 
     public void addFirst(T element) {
-        var temp = first;
-        this.first = new Node<>(element, temp);
-        this.length++;
-        if(length == 1) {
-            last = first;
+        var f = first;
+        var newNode = new Node<>(element, f, null);
+        first = newNode;
+        if (f == null) {
+            last = newNode;
+        } else {
+            f.prev = newNode;
         }
+        this.length++;
     }
 
     public void addLast(T element) {
-        var temp = last;
-        temp.next = new Node<T>(element, null);
-        last = temp.next;
+        var newNode = new Node<T>(element, null, last); // 1
+        last.next = newNode; // 2
+        last = newNode; // 3
         length++;
     }
 
     public void removeFirst() {
+        if (first == null) {
+            return;
+        }
+        var temp = first;
+        first = first.next;
+        temp.next = null;
+        length--;
+    }
+
+    public void removeLast() {
 
     }
 
-    public void removeLast(){
-
+    public void print() {
+        var temp = first;
+        while (temp != null) {
+            System.out.println(temp.element);
+            temp = temp.next;
+        }
     }
 
     private static class Node<T> {
         final T element;
         Node<T> next;
+        Node<T> prev;
 
-        Node(T element, Node<T> next) {
+        Node(T element, Node<T> next, Node<T> prev) {
             this.element = element;
             this.next = next;
+            this.prev = prev;
         }
 
         boolean hasNext() {
