@@ -1,23 +1,19 @@
-package cap03.stacks;
+package cap05.stacks;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class DynamicArrayStack implements Stack {
-    private int capacity = 100;
-    private String[] items;
+public class StaticArrayStack implements Stack {
+    private static final int CAPACITY = 10;
+    private final String[] items;
     private int length;
 
-    public DynamicArrayStack() {
-        items = new String[capacity];
+    public StaticArrayStack() {
+        items = new String[CAPACITY];
         length = 0;
     }
 
     @Override
     public void push(String element) {
-        if (length == capacity) {
-            capacity = capacity + capacity / 2;
-            items = Arrays.copyOf(items, capacity);
+        if (length == CAPACITY) {
+            return;
         }
         items[length] = element;
         length++;

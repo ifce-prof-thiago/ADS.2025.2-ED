@@ -1,4 +1,4 @@
-package cap03.stacks;
+package cap05.stacks;
 
 public interface Stack {
     void push(String element);

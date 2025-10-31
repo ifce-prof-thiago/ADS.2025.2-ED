@@ -1,4 +1,4 @@
-package cap03.stacks;
+package cap05.stacks;
 import java.util.*;
 import java.util.Stack;
 
